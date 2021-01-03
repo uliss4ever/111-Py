@@ -9,5 +9,18 @@ def binary_search(elem: int, arr: Sequence) -> Optional[int]:
     :param arr: array where element is to be found
     :return: Index of element if it's presented in the arr, None otherwise
     """
+    if not arr:
+        return None
+    l = 0
+    r = len(arr) - 1
+    while l <= r:
+        mid = (l + r)//2
+        guess = arr[mid]
+        if guess == elem:
+            return mid
+        if guess > elem:
+            r = mid - 1
+        else:
+            l = mid + 1
     print(elem, arr)
     return None
