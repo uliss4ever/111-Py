@@ -17,13 +17,13 @@ def binary_search(elem: int, arr: Sequence) -> Optional[int]:
         mid = (l + r)//2
         guess = arr[mid]
         if guess == elem:
-            while arr[mid-1] == elem:
+            while arr[mid-1] == elem and mid >= 1:
                 mid -= 1
             return mid
         if guess > elem:
             r = mid - 1
         else:
             l = mid + 1
-    # print(elem, arr)
+
     return None
-print(binary_search(2, [1, 1, 1, 2, 2, 2, 2]))
+print(binary_search(2, [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]))
