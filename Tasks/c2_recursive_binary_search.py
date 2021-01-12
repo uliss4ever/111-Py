@@ -4,15 +4,16 @@ from typing import Sequence, Optional
 def help_req(elem: int, arr: Sequence, left, right):
     if not arr:
         return None
-    mid = (left + right) // 2
-    if arr[mid] == elem:
-        while arr[mid - 1] == elem:
-            mid -= 1
+    while right >= left:
+        mid = (left + right) // 2
+        if arr[mid] == elem:
+            while arr[mid - 1] == elem and mid >= 1:
+                mid -= 1
             return mid
-    elif elem < arr[mid]:
-        return help_req(elem, arr, left, mid)
-    elif elem > arr[mid]:
-        return help_req(elem, arr, mid+1, right)
+        elif elem < arr[mid]:
+            return help_req(elem, arr, left, mid - 1)
+        elif elem > arr[mid]:
+            return help_req(elem, arr, mid + 1, right)
     return None
 
 
@@ -26,13 +27,5 @@ def binary_search(elem: int, arr: Sequence) -> Optional[int]:
     return help_req(elem, arr, 0, len(arr))
 
 
-print(binary_search(1, [0, 1, 2, 2, 3, 3, 4]))
+print(binary_search(2, [2, 2, 2, 2, 2, 2, 2]))
 
-# l = [1, 2, 3, 4, 5]
-# mid = len(l)//2
-# print(mid)
-#
-# left = 0
-# right = len(l) - 1
-# mid1 = (left + right)//2
-# print(mid1)
