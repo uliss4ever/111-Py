@@ -3,6 +3,12 @@ Taylor series
 """
 from typing import Union
 
+def step(x):
+    t = 1
+    while True:
+        t *= x
+        yield t
+
 
 def fact():
     a = 1
@@ -22,11 +28,22 @@ def ex(x: Union[int, float]) -> float:
     n = 50
     res = 1
     val = fact()
+    val1 = step(x)
     for a in range(1, n):
-        res += x**a/next(val)
+        res += next(val1)/next(val)
     return round(res, 5)
 
 print(ex(5.5))
+
+
+def step_for_sin(x):
+    a = 1
+    d = 1
+    while True:
+        a *= x
+        if d > 2 and d % 2:
+            yield a
+        d += 1
 
 def fact_for_sin():
     a = 1
@@ -40,12 +57,12 @@ g = fact_for_sin()
 
 
 def sinx(x: Union[int, float]) -> float:
-
     n = 50
     res = x
     g = fact_for_sin()
+    k = step_for_sin(x)
     for a in range(1, n):
-        res += ((-1)**a) * (x ** (2*a+1)) / (next(g))
+        res += ((-1)**a) * (next(k)) / (next(g))
     return round(res, 5)
 
 
