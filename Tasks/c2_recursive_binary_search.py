@@ -7,7 +7,7 @@ def help_req(elem: int, arr: Sequence, left, right):
     while right >= left:
         mid = (left + right) // 2
         if arr[mid] == elem:
-            while arr[mid - 1] == elem and mid >= 1:
+            while mid >= 1 and arr[mid - 1] == elem :
                 mid -= 1
             return mid
         elif elem < arr[mid]:
