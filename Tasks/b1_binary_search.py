@@ -17,7 +17,7 @@ def binary_search(elem: int, arr: Sequence) -> Optional[int]:
         mid = (l + r)//2
         guess = arr[mid]
         if guess == elem:
-            while arr[mid-1] == elem and mid >= 1:
+            while mid >= 1 and arr[mid-1] == elem :
                 mid -= 1
             return mid
         if guess > elem:
