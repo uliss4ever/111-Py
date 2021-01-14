@@ -8,5 +8,22 @@ def stairway_path(stairway: Sequence[Union[float, int]]) -> Union[float, int]:
     :param stairway: list of ints, where each int is a cost of appropriate step
     :return: minimal cost of getting to the top
     """
-    print(stairway)
-    return 0
+    if len(stairway) == 0:
+        return 0
+
+    st_min = [0]*len(stairway)
+    print([9]*7)
+    st_min[0] = stairway[0]
+    st_min[1] = stairway[1]
+    for st in range(2, len(stairway)):
+        st_min[st] = min(st_min[st - 1], st_min[st - 2]) + stairway[st]
+    print(st_min[-1])
+    return st_min[-1]
+
+def main():
+    stairway = [1, 2, 3, 1, 2, 3]
+    res = stairway_path(stairway)
+    print(res)
+
+if __name__ == "__main__":
+    main()
