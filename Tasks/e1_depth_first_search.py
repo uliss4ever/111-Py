@@ -27,6 +27,7 @@ def dfs(g: nx.Graph, start_node: Hashable) -> List[Hashable]:
 
     return nods_visit
 
+
 graph = nx.Graph()
 graph.add_nodes_from("ABCDEFG")
 graph.add_edges_from([
