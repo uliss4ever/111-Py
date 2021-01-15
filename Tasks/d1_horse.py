@@ -7,7 +7,7 @@ import numpy as np
 #     :param point: desired point for horse
 #     :return: count of paths from (1, 1) to (point[0], point[1]) (numerating from 0, so (0, 0) - left bottom tile)
 #     """
-
+#
 #
 #     f = [[0] * (shape[1]) for i in range(shape[0])]
 #     f[shape[0] - 1][0] = 1
@@ -48,7 +48,10 @@ def calculate_paths(shape: (int, int), point: (int, int)) -> int:
                     a[i][j] += 2 * a[i - 2][j - 1]
                 if i - 1 >= 0 and j - 2 >= 0:
                     a[i][j] += 2 * a[i - 1][j - 2]
-
+                if i + 1 < shape[0] and j + 2 < shape[1]:
+                    a[i][j] += 2 * a[i - 1][j + 2]
+                if i + 2 < shape[0] and j + 1 < shape[1]:
+                    a[i][j] += 2 * a[i + 2][j + 1]
     return a[point[0]][point[1]]
 
-print(calculate_paths((5, 5), (4, 4)))
+print(calculate_paths((9, 9), (8, 8)))
