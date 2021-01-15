@@ -41,8 +41,6 @@ def stairway_path(stairway: Sequence[Union[float, int]]) -> Union[float, int]:
     if len(stairway) == 0:
         return 0
     st_min = list(stairway[:2])
-    st_min[0] = stairway[0]
-    st_min[1] = stairway[1]
     for st in range(2, len(stairway)):
         st_min.append(min(st_min[-1], st_min[-2]) + stairway[st])
     return st_min[-1]
