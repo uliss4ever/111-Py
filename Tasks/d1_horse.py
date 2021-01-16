@@ -46,12 +46,14 @@ def calculate_paths(shape: (int, int), point: (int, int)) -> int:
             if a[i][j] == 0:
                 if i - 2 >= 0 and j - 1 >= 0:
                     a[i][j] += 2 * a[i - 2][j - 1]
-                if i - 1 >= 0 and j - 2 >= 0:
-                    a[i][j] += 2 * a[i - 1][j - 2]
-                if i + 1 < shape[0] and j + 2 < shape[1]:
+                if i - 1 >= 0 and j + 2 < shape[1]:
                     a[i][j] += 2 * a[i - 1][j + 2]
-                if i + 2 < shape[0] and j + 1 < shape[1]:
-                    a[i][j] += 2 * a[i + 2][j + 1]
+                if i - 1 < shape[0] and j - 2 >= 0:
+                    a[i][j] += 2 * a[i - 1][j - 2]
+                if i - 2 >= 0 and j + 1 < shape[1]:
+                    a[i][j] += 2 * a[i - 2][j + 1]
     return a[point[0]][point[1]]
 
+# я вот что-то сюда добавил
+# И попытаюсь переключиться на другую ветку
 print(calculate_paths((9, 9), (8, 8)))
