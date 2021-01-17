@@ -28,7 +28,8 @@ def fib_iterative(n: int) -> int:
     for i in range(1, n):
         fib[i + 1] += fib[i]
         fib[i + 2] += fib[i]
-
     return fib[-2]
-print(fib_iterative(0))
+
+if __name__ == "__main__":
+    print(fib_iterative(0))
 
