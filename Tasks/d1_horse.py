@@ -1,4 +1,3 @@
-import numpy as np
 def calculate_paths(shape: (int, int), point: (int, int)) -> int:
     """
     Given field with size rows*cols count available paths from (0, 0) to point
@@ -7,16 +6,5 @@ def calculate_paths(shape: (int, int), point: (int, int)) -> int:
     :param point: desired point for horse
     :return: count of paths from (1, 1) to (point[0], point[1]) (numerating from 0, so (0, 0) - left bottom tile)
     """
-def horse(shape: (int, int), point: (int, int)) -> int:
-    a = np.full(shape, 0)
-    a[0][0] = 1
-    a[2][3] = 5
-    print(a)
-    for i in range(0, shape[0]):
-        for j in range(0, shape[1]):
-            print(a[i][j])
-horse((4, 6), 6)
-    # print(shape, point)
-    # return 0
-
-
+    print(shape, point)
+    return 0
