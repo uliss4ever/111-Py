@@ -5,18 +5,21 @@ Queue priorities are from 0 to 10
 """
 from typing import Any
 
-priority_queue = []
-def enqueue(elem: Any, priority: int = 0) -> None:
-    """
-    Operation that add element to the end of the queue
 
-    :param elem: element to be added
-    :return: Nothing
-    """
-    priority_queue.insert(0, (elem, priority))
-    priority_queue.sort(key=lambda x: x[1], reverse=True)
-    return None
-print(enqueue(1, 0))
+priority_queue = [(9, 0), (3, 0), (8, 0), (5, 0), (6, 1)]
+def enqueue(elem: Any, priority: int = 0) -> None:
+        if not priority_queue:
+            priority_queue.append((elem, priority))
+            return None
+        else:
+            i = 0
+            while priority_queue[i][1] <= priority:
+                i += 1
+            priority_queue.insert(i, (elem, priority))
+        return priority_queue
+
+print(enqueue(0, 1))
+
 
 def dequeue() -> Any:
     """
@@ -25,23 +28,23 @@ def dequeue() -> Any:
     :return: dequeued element
     """
     if len(priority_queue):
-        t = priority_queue[-1]
-        del priority_queue[-1]
+        t = priority_queue[0]
+        del priority_queue[0]
         return t[0]
-    return None
-
+# print(dequeue())
 
 def peek(ind: int = 0, priority: int = 0) -> Any:
-    """
-    Allow you to see at the element in the queue without dequeuing it
+    if not priority_queue:
+        return None
+    else:
+        i = 0
+        while priority_queue[i][1] <= priority and i < ind:
+            i += 1
+        if i == ind:
+            return priority_queue[i]
 
-    :param ind: index of element (count from the beginning)
-    :return: peeked element
-    """
-    l = [i[0] for i in priority_queue if i[1] == priority]
-    if 0 <= ind < len(l):
-        return l[-ind -1]
 
+print(peek(0, 0))
 
 def clear() -> None:
     """
