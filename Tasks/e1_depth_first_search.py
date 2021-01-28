@@ -16,27 +16,26 @@ def dfs(g: nx.Graph, start_node: Hashable) -> List[Hashable]:
         node = stk[-1]
         if node not in nods_visit:
             nods_visit.append(node)
-        remv = True
         for nxt in g[node]:
             if nxt not in nods_visit:
                 stk.append(nxt)
-                remv = False
                 break
-        if remv == True:
+        else:
             stk.pop()
 
     return nods_visit
 
+if __name__ == "__main__":
 
-graph = nx.Graph()
-graph.add_nodes_from("ABCDEFG")
-graph.add_edges_from([
-    ('A', 'B'),
-    ('A', 'C'),
-    ('B', 'D'),
-    ('B', 'E'),
-    ('C', 'F'),
-    ('E', 'G'),
-])
+    graph = nx.Graph()
+    graph.add_nodes_from("ABCDEFG")
+    graph.add_edges_from([
+        ('A', 'B'),
+        ('A', 'C'),
+        ('B', 'D'),
+        ('B', 'E'),
+        ('C', 'F'),
+        ('E', 'G'),
+    ])
 
-print(dfs(graph, "A"))
+    print(dfs(graph, "A"))
