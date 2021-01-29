@@ -28,6 +28,7 @@ def insert(key: int, value: Any) -> None:
 
     while current:
         if key == current["key"]:
+            current["value"] = value
             return None
         elif key > current["key"]:
             if not current["right"]:
