@@ -18,7 +18,7 @@ def insert(key: int, value: Any) -> None:
     """
     current = _root
 
-    if not current.keys().__contains__("key"):
+    if not current:
         current["key"] = key
         current["value"] = value
         current["right"] = {}
@@ -54,7 +54,7 @@ def remove(key: int) -> Optional[Tuple[int, Any]]:
     :return: deleted (key, value) pair or None
     """
     current = _root
-    if not current.keys().__contains__("key"):
+    if not current:
         return None
     flag = False
     parent = current
