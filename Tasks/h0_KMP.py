@@ -46,12 +46,12 @@ def kmp_algo(inp_string: str, substr: str) -> Optional[int]:
             i += 1
         else:
             j = d[j - 1]
-    else:
-        if j == len(substr):
-            return i - j
-        return None
+
+    if j == len(substr):
+        return i - j
+    return None
 
 
 if __name__ == "__main__":
 
-    print(kmp_algo("akkkd", "ak"))
+    print(kmp_algo("akkkd", "mk"))
